@@ -1,3 +1,6 @@
+import { FaPaste, FaTrash } from "react-icons/fa";
+import Image from "next/image";
+
 const diary = () => {
   return (
     <main className="px-20">
@@ -6,7 +9,7 @@ const diary = () => {
           <h1 className="font-extrabold text-darkEgo text-2xl mt-5">Diary</h1>
         </div>
         <div>
-          <button className="m-5 bg-darkEgo  text-white  py-2 px-4 rounded">
+          <button className="m-5 bg-darkEgo  text-white  py-2 px-4 rounded-lg">
             Sign Out
           </button>
           <button className="bg-orangeEgo text-white py-2 px-4 h-14 w-14 rounded-full">
@@ -26,12 +29,36 @@ const diary = () => {
         </div>
       </div>
 
-      <div className=" bg-white mt-14 border  rounded">
-        <button className="bg-orangeEgo text-white py-2 px-4 h-14 w-14 rounded-full">
-          Ego
-        </button>
-        <p>Ego Nwaekpe</p>
-        <p>I ma really tired i really need a vacation</p>
+      <div className=" bg-white mt-14 border  rounded-lg ">
+        <div className="p-8">
+          <div className="flex flex-row mb-4">
+            <button className="bg-orangeEgo text-white py-2 px-4 h-14 w-14 rounded-full ">
+              Ego
+            </button>
+            <p className="mt-5 ml-5">Ego Nwaekpe</p>
+          </div>
+          <p>I need a vacation</p>
+          <div className="flex flex-row mt-10">
+            <FaTrash className="h-6 w-6 text-darkEgo text-2xl cursor-pointer mr-10" />
+            <FaPaste className="h-6 w-6 text-darkEgo text-2xl cursor-pointer" />
+          </div>
+        </div>
+      </div>
+
+      <div className=" bg-white mt-14 border  rounded-lg ">
+        <div className="p-8">
+          <div className="flex flex-row mb-4">
+            <button className="bg-orangeEgo text-white py-2 px-4 h-14 w-14 rounded-full ">
+              Ego
+            </button>
+            <p className="mt-5 ml-5">Ego Nwaekpe</p>
+          </div>
+          <p>I ma really tired i really need a vacation</p>
+          <div className="flex flex-row mt-10">
+            <FaTrash className="h-6 w-6 text-darkEgo text-2xl cursor-pointer mr-10" />
+            <FaPaste className="h-6 w-6 text-darkEgo text-2xl cursor-pointer" />
+          </div>
+        </div>
       </div>
     </main>
   );
