@@ -11,6 +11,7 @@ module.exports = {
         darkEgo: "#414141",
         greyEgo: "#ebebeb",
         orangeEgo: "#FAA603",
+        skyblueEgo: "#4E9D9A",
       },
     },
     plugins: [],
