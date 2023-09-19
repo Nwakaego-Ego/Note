@@ -45,7 +45,7 @@ const register = () => {
                   type="text"
                   id="name"
                   name="name"
-                  className="block rounded-md border  border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
+                  className="block rounded-md border bg-gray-100  border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -57,7 +57,7 @@ const register = () => {
                   type="text"
                   id="email"
                   name="email"
-                  className="block rounded-md border  border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
+                  className="block rounded-md border bg-gray-100 border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
                   placeholder="Enter your email"
                 />
               </div>
@@ -69,7 +69,7 @@ const register = () => {
                   type="number"
                   id="password"
                   name="password"
-                  className="block rounded-md border  border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
+                  className="block rounded-md border bg-gray-100  border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
                   placeholder="Enter your password"
                 />
               </div>
