@@ -1,7 +1,30 @@
-import { FaPaste, FaTrash } from "react-icons/fa";
-import Image from "next/image";
+"use client";
+import { useState } from "react";
+import ResultCard from "../../components/resultcard";
 
 const diary = () => {
+  const [notes, setNotes] = useState([]);
+  const [note, setNote] = useState("");
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    setNote(e.target.value);
+  };
+
+  console.log(notes);
+
+  const saveNote = () => {
+    if (note === "") {
+      setError("Error.... add note");
+    } else {
+      const newNote = { id: notes.length + 1, note: note };
+
+      setNotes([...notes, newNote]);
+      setNote("");
+      setError("");
+    }
+  };
+
   return (
     <main className="px-20">
       <div className="flex flex-row justify-between pt-10 ">
@@ -17,51 +40,34 @@ const diary = () => {
           </button>
         </div>
       </div>
-      <div className=" bg-white mt-14 border  rounded-xl">
-        <div className="bg-greyEgo m-10 h-40 rounded p-5 text-gray-500">
-          <div>what is on your mind</div>
-        </div>
-        <div className=" flex flex-row px-10 py-5 justify-between">
-          <p className="mt-2 text-gray-500">0/300</p>
-          <button className=" bg-gray-500  text-white  py-2 px-4 rounded">
+      <div className=" bg-white mt-14 border w-full  rounded-xl h-80  relative">
+        <textarea
+          type="text"
+          id="text"
+          value={note}
+          className="bg-greyEgo m-10 h-40 rounded p-5 text-gray-500 lg:w-11/12 w-72"
+          onChange={handleChange}
+          placeholder="Enter email........"
+        />
+
+        <div className="flex flex-row px-10 py-5 justify-between relative bottom-8 ">
+          <p className="text-gray-500 mb-20">0/300</p>
+          <button
+            className="bg-gray-500 text-white h-10  px-8 mb-10 mr-4 rounded"
+            onClick={saveNote}
+          >
             Save
           </button>
         </div>
       </div>
 
-      <div className=" bg-white mt-14 border  rounded-xl ">
-        <div className="p-8">
-          <div className="flex flex-row mb-4">
-            <button className="bg-orangeEgo text-white py-2 px-4 h-14 w-14 rounded-full ">
-              Ego
-            </button>
-            <p className="mt-5 ml-5 text-gray-500">Ego Nwaekpe</p>
+      {notes?.map((data) => {
+        return (
+          <div key={data.id}>
+            <ResultCard note={data.note} />
           </div>
-          <p className="text-gray-500">I need a vacation</p>
-          <div className="flex flex-row mt-10">
-            <FaTrash className="h-6 w-6 text-gray-500 text-2xl cursor-pointer mr-10" />
-            <FaPaste className="h-6 w-6 text-gray-500 text-2xl cursor-pointer" />
-          </div>
-        </div>
-      </div>
-
-      <div className=" bg-white mt-14 border  rounded-xl ">
-        <div className="p-8">
-          <div className="flex flex-row mb-4">
-            <button className="bg-orangeEgo text-white py-2 px-4 h-14 w-14 rounded-full ">
-              Ego
-            </button>
-            <p className="mt-5 ml-5 text-gray-500">Ego Nwaekpe</p>
-          </div>
-          <p className="text-gray-500">
-            I am really tired i really need a vacation
-          </p>
-          <div className="flex flex-row mt-10">
-            <FaTrash className="h-6 w-6 text-gray-500 text-2xl cursor-pointer mr-10" />
-            <FaPaste className="h-6 w-6 text-gray-500 text-2xl cursor-pointer" />
-          </div>
-        </div>
-      </div>
+        );
+      })}
     </main>
   );
 };

@@ -13,6 +13,7 @@ module.exports = {
         orangeEgo: "#FAA603",
         skyblueEgo: "#4E9D9A",
       },
+      spacing: { "2000px": "300px", "1500px": "1000px" },
     },
     plugins: [],
   },

@@ -79,7 +79,7 @@ const register = () => {
                 </button>
               </div>
               <p className="mt-1 text-gray-700">
-                Create an account to start using diary
+                Already own an account sign up
               </p>
             </form>
           </div>

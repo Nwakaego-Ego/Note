@@ -7,9 +7,9 @@ import Login from "./Pages/login/page";
 const main = () => {
   return (
     <div>
-      {/* <Main /> */}
+      <Main />
       {/* <Link href="/register">Link</Link> */}
-      <Register />
+      {/* <Register /> */}
       {/* <Password /> */}
       {/* <Login /> */}
     </div>
