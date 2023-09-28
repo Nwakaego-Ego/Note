@@ -1,17 +1,48 @@
 "use client";
 import { useState } from "react";
 import ResultCard from "../../components/resultcard";
+import Update from "../../components/update";
+import Delete from "../../components/del";
 
 const diary = () => {
   const [notes, setNotes] = useState([]);
   const [note, setNote] = useState("");
   const [error, setError] = useState("");
+  const [modalopen, setModalOpen] = useState(false);
+  const [isDel, setIsDel] = useState(false);
+  const [selected, setSelected] = useState([]);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const openDelModal = () => {
+    setIsDel(true);
+  };
+
+  const closeDelModal = () => {
+    setIsDel(false);
+  };
 
   const handleChange = (e) => {
     setNote(e.target.value);
   };
 
   console.log(notes);
+
+  const delNotes = () => {
+    setNotes("");
+  };
+
+  const delNote = () => {
+    const newNote = notes.filter((note) => note.id !== selected);
+    setNotes(newNote);
+    closeDelModal();
+  };
 
   const saveNote = () => {
     if (note === "") {
@@ -45,9 +76,9 @@ const diary = () => {
           type="text"
           id="text"
           value={note}
-          className="bg-greyEgo m-10 h-40 rounded p-5 text-gray-500 lg:w-11/12 w-72"
+          className="bg-greyEgo m-10 h-40 rounded p-5 text-gray-500 lg:w-11/12 w-80"
           onChange={handleChange}
-          placeholder="Enter email........"
+          placeholder="Enter note........"
         />
 
         <div className="flex flex-row px-10 py-5 justify-between relative bottom-8 ">
@@ -64,10 +95,29 @@ const diary = () => {
       {notes?.map((data) => {
         return (
           <div key={data.id}>
-            <ResultCard note={data.note} />
+            <ResultCard
+              note={data.note}
+              openModal={openModal}
+              openDelModal={openDelModal}
+              closeModal={closeModal}
+              setSelected={setSelected}
+            />
           </div>
         );
       })}
+      <Update
+        openModal={openDelModal}
+        closeModal={closeModal}
+        modalOpen={modalopen}
+      />
+      <Delete
+        openDelModal={openDelModal}
+        closeDelModal={closeDelModal}
+        isDel={isDel}
+        modalOpen={modalopen}
+        delNote={delNote}
+        delNotes={delNotes}
+      />
     </main>
   );
 };
