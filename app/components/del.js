@@ -41,6 +41,7 @@ const Delete = (props) => {
             className="border bg-red-500 text-white h-10  px-8  rounded-lg mt-16 w-40"
             onClick={() => {
               props.delNote();
+              // props.delNotes();
             }}
           >
             Yes, delete

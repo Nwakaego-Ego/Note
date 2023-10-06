@@ -17,7 +17,8 @@ const resultCard = (props) => {
             <button
               onClick={() => {
                 props.openDelModal();
-                props.setSelected(props.id);
+                // props.setSelected(props.id);
+                props.setSelected();
               }}
             >
               <FaTrash className="h-6 w-6 text-gray-500 text-2xl cursor-pointer mr-10" />

@@ -35,12 +35,12 @@ const diary = () => {
   console.log(notes);
 
   const delNotes = () => {
-    setNotes("");
+    setNotes([]);
   };
 
   const delNote = () => {
-    const newNote = notes.filter((note) => note.id !== selected);
-    setNotes(newNote);
+    const newNotes = notes.filter((item) => item.id !== selected);
+    setNotes(newNotes);
     closeDelModal();
   };
 
@@ -100,11 +100,12 @@ const diary = () => {
               openModal={openModal}
               openDelModal={openDelModal}
               closeModal={closeModal}
-              setSelected={setSelected}
+              setSelected={() => setSelected(data.id)}
             />
           </div>
         );
       })}
+
       <Update
         openModal={openDelModal}
         closeModal={closeModal}
