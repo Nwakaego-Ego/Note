@@ -1,6 +1,35 @@
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
+import { auth } from "../../Config/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import Link from "next/link";
+import toast from "react-hot-toast";
+import { useRouter } from "next/router";
 
 const register = () => {
+  const router = useRouter();
+  const [registerEmail, setRegisterEmail] = useState();
+  const [registerPassword, setRegisterPassword] = useState();
+  const [userName, setUserName] = useState();
+
+  console.log(auth.currentUser.registerEmail);
+
+  const registerUser = async () => {
+    try {
+      await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      );
+      toast.success(response?.message);
+      <Link href="/"></Link>;
+      console.log("Logged in succesfully");
+    } catch (error) {
+      console.error("Error registering user:", error.message);
+    }
+  };
+
   return (
     <div>
       <div className="flex flex-row justify-between pt-3 ">
@@ -47,6 +76,7 @@ const register = () => {
                   name="name"
                   className="block rounded-md border bg-gray-100  border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
                   placeholder="Enter your full name"
+                  onChange={(e) => setUserName(e.target.value)}
                 />
               </div>
               <div>
@@ -59,6 +89,7 @@ const register = () => {
                   name="email"
                   className="block rounded-md border bg-gray-100 border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
                   placeholder="Enter your email"
+                  onChange={(e) => setRegisterEmail(e.target.value)}
                 />
               </div>
               <div>
@@ -66,15 +97,19 @@ const register = () => {
                   Password
                 </label>
                 <input
-                  type="number"
+                  type="password"
                   id="password"
                   name="password"
                   className="block rounded-md border bg-gray-100  border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
                   placeholder="Enter your password"
+                  onChange={(e) => setRegisterPassword(e.target.value)}
                 />
               </div>
               <div>
-                <button className="bg-skyblueEgo w-5/6 text-white py-2 px-4 rounded mt-5 lg:w-full">
+                <button
+                  onClick={registerUser}
+                  className="bg-skyblueEgo w-5/6 text-white py-2 px-4 rounded mt-5 lg:w-full"
+                >
                   Login
                 </button>
               </div>

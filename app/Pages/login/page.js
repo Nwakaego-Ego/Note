@@ -2,12 +2,18 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
-const login = () => {
+const Login = () => {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
 
   const toggle = () => {
     setOpen(!open);
+  };
+
+  const signUp = () => {
+    router.push("/register");
   };
 
   return (
@@ -19,8 +25,11 @@ const login = () => {
           </h1>
         </div>
         <div>
-          <button className="mt-5 mr-10 lg:mr-32 bg-skyblueEgo  text-white  py-2 px-4 rounded-lg">
-            Sign In
+          <button
+            onClick={signUp}
+            className="mt-5 mr-10 lg:mr-32 bg-skyblueEgo  text-white  py-2 px-4 rounded-lg"
+          >
+            Sign Up
           </button>
         </div>
       </div>
@@ -103,4 +112,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;

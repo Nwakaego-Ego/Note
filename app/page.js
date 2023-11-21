@@ -1,19 +1,9 @@
-import Main from "./Pages/diary/page";
-import Link from "next/link";
-import Register from "./Pages/register/page";
-import Password from "./Pages/password/page";
-import Login from "./Pages/login/page";
+import Login from "../app/Pages/login/page";
 
-const main = () => {
+export default function Home() {
   return (
-    <div>
-      <Main />
-      {/* <Link href="/register">Link</Link> */}
-      {/* <Register /> */}
-      {/* <Password /> */}
-      {/* <Login /> */}
-    </div>
+    <main className="">
+      <Login />
+    </main>
   );
-};
-
-export default main;
+}
