@@ -8,12 +8,12 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 
 const register = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const [registerEmail, setRegisterEmail] = useState();
   const [registerPassword, setRegisterPassword] = useState();
   const [userName, setUserName] = useState();
 
-  console.log(auth.currentUser.registerEmail);
+  console.log(auth?.currentUser?.registerEmail);
 
   const registerUser = async () => {
     try {
