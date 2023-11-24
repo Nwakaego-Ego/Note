@@ -5,26 +5,28 @@ import { auth } from "../../Config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import Link from "next/link";
 import toast from "react-hot-toast";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const register = () => {
-  // const router = useRouter();
+  const router = useRouter();
   const [registerEmail, setRegisterEmail] = useState();
   const [registerPassword, setRegisterPassword] = useState();
   const [userName, setUserName] = useState();
 
   console.log(auth?.currentUser?.registerEmail);
 
-  const registerUser = async () => {
+  const registerUser = async (e) => {
+    e.preventDefault();
     try {
+      console.log("Trying to register user...");
       await createUserWithEmailAndPassword(
         auth,
         registerEmail,
         registerPassword
       );
+      router.push("/hello"); // Use router.push to navigate programmatically
       toast.success(response?.message);
-      <Link href="/"></Link>;
-      console.log("Logged in succesfully");
+      console.log("User registered successfully!");
     } catch (error) {
       console.error("Error registering user:", error.message);
     }
