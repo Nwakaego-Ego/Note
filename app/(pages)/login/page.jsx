@@ -3,8 +3,13 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import { auth } from "../../Config/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
@@ -14,6 +19,24 @@ const Login = () => {
 
   const signUp = () => {
     router.push("/register");
+  };
+
+  const signIn = async (e) => {
+    e.preventDefault();
+    try {
+      console.log("Trying to register user...");
+      const user = await signInWithEmailAndPassword(
+        auth,
+        loginEmail,
+        loginPassword
+      );
+      console.log(user);
+      router.push("/diary");
+      toast.success(response?.message);
+      console.log("User registered successfully!");
+    } catch (error) {
+      console.error("Error registering user:", error.message);
+    }
   };
 
   return (
@@ -65,6 +88,7 @@ const Login = () => {
                   name="email"
                   className="block rounded-md border bg-gray-100 border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
                   placeholder="Enter your email"
+                  onChange={(e) => setLoginEmail(e.target.value)}
                 />
               </div>
               <div>
@@ -82,6 +106,7 @@ const Login = () => {
                   name="password"
                   className="block rounded-md border bg-gray-100  border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
                   placeholder="Enter your password"
+                  onChange={(e) => setLoginPassword(e.target.value)}
                 />
               </div>
               {open ? (
@@ -97,7 +122,10 @@ const Login = () => {
               )}
 
               <div>
-                <button className="bg-skyblueEgo w-5/6 text-white py-2 px-4 rounded mt-5 lg:w-full">
+                <button
+                  onClick={signIn}
+                  className="bg-skyblueEgo w-5/6 text-white py-2 px-4 rounded mt-5 lg:w-full"
+                >
                   Login
                 </button>
               </div>

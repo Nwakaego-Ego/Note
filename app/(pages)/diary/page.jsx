@@ -3,14 +3,27 @@ import { useState } from "react";
 import ResultCard from "../../components/resultcard";
 import Update from "../../components/update";
 import Delete from "../../components/del";
+import { useRouter } from "next/navigation";
+import { auth } from "../../Config/firebase";
+import { signOut } from "firebase/auth";
 
 const diary = () => {
+  const router = useRouter();
   const [notes, setNotes] = useState([]);
   const [note, setNote] = useState("");
   const [error, setError] = useState("");
   const [modalopen, setModalOpen] = useState(false);
   const [isDel, setIsDel] = useState(false);
   const [selected, setSelected] = useState([]);
+
+  const signOut = async () => {
+    try {
+      await signOut(auth);
+      router.push("/");
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const openModal = () => {
     setModalOpen(true);
@@ -63,7 +76,10 @@ const diary = () => {
           <h1 className="font-extrabold text-gray-600 text-2xl mt-5">Diary</h1>
         </div>
         <div>
-          <button className="m-5 bg-gray-500  text-white  py-2 px-4 rounded-lg">
+          <button
+            onClick={signOut}
+            className="m-5 bg-gray-500  text-white  py-2 px-4 rounded-lg"
+          >
             Sign Out
           </button>
           <button className="bg-orangeEgo text-white py-2 px-4 h-14 w-14 rounded-full">

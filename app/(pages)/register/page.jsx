@@ -24,7 +24,7 @@ const register = () => {
         registerEmail,
         registerPassword
       );
-      router.push("/hello"); // Use router.push to navigate programmatically
+      router.push("/");
       toast.success(response?.message);
       console.log("User registered successfully!");
     } catch (error) {
