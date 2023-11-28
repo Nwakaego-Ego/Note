@@ -21,6 +21,10 @@ const Login = () => {
     router.push("/register");
   };
 
+  const handleReset = () => {
+    router.push("/password");
+  };
+
   const signIn = async (e) => {
     e.preventDefault();
     try {
@@ -86,7 +90,7 @@ const Login = () => {
                   type="text"
                   id="email"
                   name="email"
-                  className="block rounded-md border bg-gray-100 border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
+                  className="block rounded-md border bg-gray-100 border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-full lg:w-full"
                   placeholder="Enter your email"
                   onChange={(e) => setLoginEmail(e.target.value)}
                 />
@@ -96,7 +100,11 @@ const Login = () => {
                   <label htmlFor="age" className="text-gray-700">
                     Password
                   </label>
-                  <label htmlFor="age" className=" text-skyblueEgo">
+                  <label
+                    onClick={handleReset}
+                    htmlFor="age"
+                    className=" text-skyblueEgo cursor-pointer"
+                  >
                     Forget password
                   </label>
                 </div>
@@ -104,7 +112,7 @@ const Login = () => {
                   type={open ? "text" : "password"}
                   id="password"
                   name="password"
-                  className="block rounded-md border bg-gray-100  border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
+                  className="block rounded-md border bg-gray-100  border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-full lg:w-full"
                   placeholder="Enter your password"
                   onChange={(e) => setLoginPassword(e.target.value)}
                 />
@@ -124,7 +132,7 @@ const Login = () => {
               <div>
                 <button
                   onClick={signIn}
-                  className="bg-skyblueEgo w-5/6 text-white py-2 px-4 rounded mt-5 lg:w-full"
+                  className="bg-skyblueEgo text-white py-2 px-4 rounded mt-5 w-full cursor-pointer"
                 >
                   Login
                 </button>

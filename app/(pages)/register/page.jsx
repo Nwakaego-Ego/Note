@@ -13,6 +13,10 @@ const register = () => {
   const [registerPassword, setRegisterPassword] = useState();
   const [userName, setUserName] = useState();
 
+  const signIn = () => {
+    router.push("/");
+  };
+
   console.log(auth?.currentUser?.registerEmail);
 
   const registerUser = async (e) => {
@@ -76,7 +80,7 @@ const register = () => {
                   type="text"
                   id="name"
                   name="name"
-                  className="block rounded-md border bg-gray-100  border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
+                  className="block rounded-md border bg-gray-100  border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-full"
                   placeholder="Enter your full name"
                   onChange={(e) => setUserName(e.target.value)}
                 />
@@ -89,7 +93,7 @@ const register = () => {
                   type="text"
                   id="email"
                   name="email"
-                  className="block rounded-md border bg-gray-100 border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
+                  className="block rounded-md border bg-gray-100 border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-full"
                   placeholder="Enter your email"
                   onChange={(e) => setRegisterEmail(e.target.value)}
                 />
@@ -102,7 +106,7 @@ const register = () => {
                   type="password"
                   id="password"
                   name="password"
-                  className="block rounded-md border bg-gray-100  border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-5/6 lg:w-full"
+                  className="block rounded-md border bg-gray-100  border-gray-300 focus:outline-none focus:border-skyblueEgo my-4 h-10 pl-5 w-full"
                   placeholder="Enter your password"
                   onChange={(e) => setRegisterPassword(e.target.value)}
                 />
@@ -110,13 +114,14 @@ const register = () => {
               <div>
                 <button
                   onClick={registerUser}
-                  className="bg-skyblueEgo w-5/6 text-white py-2 px-4 rounded mt-5 lg:w-full"
+                  className="bg-skyblueEgo  text-white py-2 px-4 rounded mt-5 w-full"
                 >
                   Login
                 </button>
               </div>
-              <p className="mt-1 text-gray-700">
-                Already own an account sign up
+              <p onClick={signIn} className="mt-1 text-gray-700 cursor-pointer">
+                Already own an account{" "}
+                <span className="text-skyblueEgo">Sign in</span>
               </p>
             </form>
           </div>
