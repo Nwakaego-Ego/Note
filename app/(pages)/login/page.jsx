@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 import Image from "next/image";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useRouter } from "next/navigation";
@@ -18,7 +19,8 @@ const LoginSchema = Yup.object().shape({
 
 const Login = () => {
   const router = useRouter();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState("");
 
   const toggle = () => {
     setOpen(!open);
@@ -45,8 +47,36 @@ const Login = () => {
       console.log("User registered successfully!");
     } catch (error) {
       console.error("Error registering user:", error.message);
+      console.log(user);
+      setError(Error);
+      toast.error(error);
     }
   };
+
+  // const signIn = async (values) => {
+  //   try {
+  //     const user = await signInWithEmailAndPassword(
+  //       auth,
+  //       values.email,
+  //       values.password
+  //     );
+  //     console.log(user);
+  //     router.push("/diary");
+  //     toast.success("Login successful!");
+  //     console.log("User logged in successfully!");
+  //   } catch (error) {
+  //     console.error("Error logging in:", error.message);
+
+  //     if (error.code === "auth/invalid-login-credentials") {
+  //       // Handle invalid login credentials error
+  //       toast.error("Invalid login credentials");
+  //     } else {
+  //       // Handle other errors
+  //       toast.error("An error occurred while logging in");
+  //     }
+
+  //   }
+  // };
 
   return (
     <div>
@@ -146,7 +176,7 @@ const Login = () => {
                     onClick={toggle}
                   />
                 )}
-
+                <span>{error}</span>
                 <div>
                   <button
                     type="submit"
