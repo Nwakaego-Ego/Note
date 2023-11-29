@@ -41,7 +41,12 @@ const UpdateNote = (props) => {
           <textarea type="text" id="name" className="input-text" />
           <div className="flex justify-between">
             <p>0/300</p>
-            <button className="bg-skyblueEgo text-white h-10  px-8 mb-10 mr-4 rounded">
+            <button
+              onClick={() => {
+                props.UpdateNote(index, newValue);
+              }}
+              className="bg-skyblueEgo text-white h-10  px-8 mb-10 mr-4 rounded"
+            >
               Update
             </button>
           </div>

@@ -57,6 +57,12 @@ const diary = () => {
     closeDelModal();
   };
 
+  function updateNote(index, newValue) {
+    const updatedNote = [...notes];
+    updatedNote[index] = newValue;
+    setNotes(updatedNote);
+  }
+
   const saveNote = () => {
     if (note === "") {
       setError("Error.... add note");
@@ -92,7 +98,7 @@ const diary = () => {
           type="text"
           id="text"
           value={note}
-          className="bg-greyEgo m-10 h-40 rounded p-5 text-gray-500 lg:w-11/12 w-80"
+          className="bg-greyEgo m-10 h-40 rounded p-5 text-gray-500 lg:w-11/12 w-10/12"
           onChange={handleChange}
           placeholder="Enter note........"
         />
@@ -126,6 +132,7 @@ const diary = () => {
         openModal={openDelModal}
         closeModal={closeModal}
         modalOpen={modalopen}
+        updateNote={updateNote}
       />
       <Delete
         openDelModal={openDelModal}

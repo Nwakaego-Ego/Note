@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FaPaste, FaTrash, FaTwitter } from "react-icons/fa";
+import { FaEdit, FaTrash, FaTwitter } from "react-icons/fa";
 
 const resultCard = (props) => {
   return (
@@ -24,10 +24,12 @@ const resultCard = (props) => {
               <FaTrash className="h-6 w-6 text-gray-500 text-2xl cursor-pointer mr-10" />
             </button>
             <button
-              onClick={() => props.openModal()}
+              onClick={() => {
+                props.openModal();
+              }}
               // className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
             >
-              <FaPaste className="h-6 w-6 text-gray-500 text-2xl cursor-pointer" />
+              <FaEdit className="h-6 w-6 text-gray-500 text-2xl cursor-pointer" />
             </button>
           </div>
         </div>
