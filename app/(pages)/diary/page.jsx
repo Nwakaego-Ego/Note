@@ -15,6 +15,7 @@ const diary = () => {
   const [modalopen, setModalOpen] = useState(false);
   const [isDel, setIsDel] = useState(false);
   const [selected, setSelected] = useState([]);
+  const [noteUpdate, setNoteUpdated] = useState("");
 
   const signOut = async () => {
     try {
@@ -57,11 +58,20 @@ const diary = () => {
     closeDelModal();
   };
 
-  function updateNote(index, newValue) {
-    const updatedNote = [...notes];
-    updatedNote[index] = newValue;
-    setNotes(updatedNote);
-  }
+  // function updateNote(index, newValue) {
+  //   const updatedNote = [...notes];
+  //   updatedNote[index] = newValue;
+  //   setNotes(updatedNote);
+  // }
+
+  const updateNote = (index, updatedNote) => {
+    setNotes((prevNotes) => {
+      const updatedNotes = [...prevNotes];
+      updatedNotes[index] = { ...updatedNote, id: index + 1 };
+      return updatedNotes;
+    });
+    closeModal();
+  };
 
   const saveNote = () => {
     if (note === "") {
@@ -99,7 +109,6 @@ const diary = () => {
           id="text"
           value={note}
           className="bg-greyEgo m-10 h-40 rounded p-5 text-gray-500 lg:w-11/12 w-10/12"
-          onChange={handleChange}
           placeholder="Enter note........"
         />
 
@@ -133,7 +142,10 @@ const diary = () => {
         closeModal={closeModal}
         modalOpen={modalopen}
         updateNote={updateNote}
+        selected={selected}
+        noteUpdate={noteUpdate}
       />
+
       <Delete
         openDelModal={openDelModal}
         closeDelModal={closeDelModal}

@@ -32,7 +32,9 @@ const UpdateNote = (props) => {
           <textarea
             type="text"
             id="text"
+            value={props.noteUpdate}
             className="bg-greyEgo m-10 h-40 rounded p-5 text-gray-500 lg:w-10/12 w-96 "
+            onChange={(e) => props.setNoteUpdated(e.target.value)}
             placeholder="Update note........"
           />
         </div>
@@ -41,11 +43,23 @@ const UpdateNote = (props) => {
           <textarea type="text" id="name" className="input-text" />
           <div className="flex justify-between">
             <p>0/300</p>
-            <button
+            {/* <button
               onClick={() => {
-                props.UpdateNote(index, newValue);
+                props.updateNote(index, newValue);
+                props.closeModal();
               }}
               className="bg-skyblueEgo text-white h-10  px-8 mb-10 mr-4 rounded"
+            >
+              Update
+            </button> */}
+            <button
+              onClick={() => {
+                // Call the updateNote function when the button is clicked
+                props.updateNote(props.selected - 1, {
+                  note: props.noteUpdate, // Use the value entered by the user
+                });
+              }}
+              className="bg-skyblueEgo text-white h-10 px-8 mb-10 mr-4 rounded"
             >
               Update
             </button>
