@@ -109,6 +109,7 @@ const diary = () => {
           id="text"
           value={note}
           className="bg-greyEgo m-10 h-40 rounded p-5 text-gray-500 lg:w-11/12 w-10/12"
+          onChange={(e) => setNote(e.target.value)}
           placeholder="Enter note........"
         />
 
@@ -144,6 +145,7 @@ const diary = () => {
         updateNote={updateNote}
         selected={selected}
         noteUpdate={noteUpdate}
+        setNoteUpdated={setNoteUpdated}
       />
 
       <Delete
