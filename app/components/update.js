@@ -54,9 +54,8 @@ const UpdateNote = (props) => {
             </button> */}
             <button
               onClick={() => {
-                // Call the updateNote function when the button is clicked
                 props.updateNote(props.selected - 1, {
-                  note: props.noteUpdate, // Use the value entered by the user
+                  note: props.noteUpdate,
                 });
               }}
               className="bg-skyblueEgo text-white h-10 px-8 mb-10 mr-4 rounded"

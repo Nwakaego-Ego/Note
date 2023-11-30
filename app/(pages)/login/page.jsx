@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { toast } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import Image from "next/image";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useRouter } from "next/navigation";
@@ -36,7 +36,6 @@ const Login = () => {
 
   const signIn = async (values) => {
     try {
-      console.log("Trying to register user...");
       const user = await signInWithEmailAndPassword(
         auth,
         values.email,
@@ -44,39 +43,18 @@ const Login = () => {
       );
       console.log(user);
       router.push("/diary");
-      console.log("User registered successfully!");
+      toast.success("Login successful!");
+      console.log("User logged in successfully!");
     } catch (error) {
-      console.error("Error registering user:", error.message);
-      console.log(user);
-      setError(Error);
-      toast.error(error);
+      console.error("Error logging in:", error.message);
+
+      if (error.code === "auth/invalid-login-credentials") {
+        toast.error("Invalid login credentials");
+      } else {
+        toast.error("An error occurred while logging in");
+      }
     }
   };
-
-  // const signIn = async (values) => {
-  //   try {
-  //     const user = await signInWithEmailAndPassword(
-  //       auth,
-  //       values.email,
-  //       values.password
-  //     );
-  //     console.log(user);
-  //     router.push("/diary");
-  //     toast.success("Login successful!");
-  //     console.log("User logged in successfully!");
-  //   } catch (error) {
-  //     console.error("Error logging in:", error.message);
-
-  //     if (error.code === "auth/invalid-login-credentials") {
-  //       // Handle invalid login credentials error
-  //       toast.error("Invalid login credentials");
-  //     } else {
-  //       // Handle other errors
-  //       toast.error("An error occurred while logging in");
-  //     }
-
-  //   }
-  // };
 
   return (
     <div>
@@ -94,6 +72,7 @@ const Login = () => {
             Sign Up
           </button>
         </div>
+        <Toaster position="top-center" reverseOrder={false} />
       </div>
 
       <div className="lg:flex lg:flex-row ">
