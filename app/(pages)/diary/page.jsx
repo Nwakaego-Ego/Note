@@ -58,16 +58,11 @@ const diary = () => {
     closeDelModal();
   };
 
-  // function updateNote(index, newValue) {
-  //   const updatedNote = [...notes];
-  //   updatedNote[index] = newValue;
-  //   setNotes(updatedNote);
-  // }
-
   const updateNote = (index, updatedNote) => {
     setNotes((prevNotes) => {
       const updatedNotes = [...prevNotes];
       updatedNotes[index] = { ...updatedNote, id: index + 1 };
+      console.log("Updated Notes:", updatedNotes);
       return updatedNotes;
     });
     closeModal();

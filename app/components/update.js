@@ -1,6 +1,6 @@
 import Modal from "react-modal";
 
-const UpdateNote = (props) => {
+const UpdateNoteComponent = (props) => {
   const customStyles = {
     content: {
       top: "50%",
@@ -43,15 +43,7 @@ const UpdateNote = (props) => {
           <textarea type="text" id="name" className="input-text" />
           <div className="flex justify-between">
             <p>0/300</p>
-            {/* <button
-              onClick={() => {
-                props.updateNote(index, newValue);
-                props.closeModal();
-              }}
-              className="bg-skyblueEgo text-white h-10  px-8 mb-10 mr-4 rounded"
-            >
-              Update
-            </button> */}
+
             <button
               onClick={() => {
                 props.updateNote(props.selected - 1, {
@@ -69,4 +61,4 @@ const UpdateNote = (props) => {
   );
 };
 
-export default UpdateNote;
+export default UpdateNoteComponent;
