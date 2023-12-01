@@ -67,10 +67,15 @@ const Password = () => {
             <h1 className=" font-bold text-2xl text-gray-500">
               Forgot your password?
             </h1>
+            {/* <p className="text-gray-700 text-sm mt-3 mb-5">
+              Dont worry, we got you covered. Enter the email address associated
+              with this account.
+            </p> */}
             <p className="text-gray-700 text-sm mt-3 mb-5">
-              Don't worry, we got you covered. Enter the email address
+              Don&apos;t worry, we got you covered. Enter the email address
               associated with this account.
             </p>
+
             <Formik
               initialValues={{ email: "" }}
               validationSchema={PasswordResetSchema}
