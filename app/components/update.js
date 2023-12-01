@@ -43,7 +43,6 @@ const UpdateNoteComponent = (props) => {
           <textarea type="text" id="name" className="input-text" />
           <div className="flex justify-between">
             <p>0/300</p>
-
             <button
               onClick={() => {
                 props.updateNote(props.selected - 1, {
