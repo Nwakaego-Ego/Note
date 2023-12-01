@@ -1,8 +1,6 @@
 "use client";
-
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-// import { toast } from "react-hot-toast";
 import Image from "next/image";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { useRouter } from "next/navigation";
@@ -11,17 +9,17 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-const LoginSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email address").required("Required"),
-  password: Yup.string()
-    .min(6, "Password should be at least 6 characters")
-    .required("Required"),
-});
-
 const Login = () => {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [error, setError] = useState("");
+
+  const LoginSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email address").required("Required"),
+    password: Yup.string()
+      .min(6, "Password should be at least 6 characters")
+      .required("Required"),
+  });
 
   const toggle = () => {
     setOpen(!open);

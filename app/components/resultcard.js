@@ -1,7 +1,6 @@
-import Image from "next/image";
-import { FaEdit, FaTrash, FaTwitter } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
-const resultCard = (props) => {
+const ResultCard = (props) => {
   return (
     <div>
       <div className="bg-white mt-14 border rounded-xl">
@@ -38,4 +37,4 @@ const resultCard = (props) => {
   );
 };
 
-export default resultCard;
+export default ResultCard;

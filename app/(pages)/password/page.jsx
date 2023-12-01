@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -8,16 +7,16 @@ import * as Yup from "yup";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../Config/firebase";
 
-const PasswordResetSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email address").required("Required"),
-});
-
 const Password = () => {
   const router = useRouter();
 
   const signIn = () => {
     router.push("/");
   };
+
+  const PasswordResetSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email address").required("Required"),
+  });
 
   const forgetPassword = async (values) => {
     try {

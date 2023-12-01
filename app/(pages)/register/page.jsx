@@ -3,24 +3,23 @@ import React from "react";
 import Image from "next/image";
 import { auth } from "../../Config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import Link from "next/link";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-const RegisterSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(2, "Name should be at least 2 characters")
-    .required("Required"),
-  email: Yup.string().email("Invalid email address").required("Required"),
-  password: Yup.string()
-    .min(6, "Password should be at least 6 characters")
-    .required("Required"),
-});
-
 const Register = () => {
   const router = useRouter();
+
+  const RegisterSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(2, "Name should be at least 2 characters")
+      .required("Required"),
+    email: Yup.string().email("Invalid email address").required("Required"),
+    password: Yup.string()
+      .min(6, "Password should be at least 6 characters")
+      .required("Required"),
+  });
 
   const signIn = () => {
     router.push("/");

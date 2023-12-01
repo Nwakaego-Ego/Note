@@ -1,6 +1,6 @@
 import "./miniSeries.css";
 
-const miniSeries = () => {
+const MiniSeries = () => {
   const series = [
     {
       image: "/input.svg",
@@ -75,4 +75,4 @@ const miniSeries = () => {
   );
 };
 
-export default miniSeries;
+export default MiniSeries;
